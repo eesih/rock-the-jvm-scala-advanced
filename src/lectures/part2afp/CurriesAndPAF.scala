@@ -81,6 +81,6 @@ object CurriesAndPAF extends App {
   //println(byFunction(42))
   //println(byFunction(method)) //compiler does NOT DO the ETA-expansion
   println(byFunction(parenMethod)) //compiler does the ETA-expansion
-  byFunction(() => 42))
+ // byFunction(() => 42))
   println(byFunction(parenMethod _)) //also works
 }
