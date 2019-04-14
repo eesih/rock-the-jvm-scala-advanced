@@ -85,7 +85,7 @@ object FBoundedPolymorphism extends App {
     def breed(implicit animalTypeClassInstance: Animal[A]): List[A]
       = animalTypeClassInstance.breed(animal)
   }
-  
+
   val dog = new Dog
   dog.breed
 }
