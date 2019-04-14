@@ -14,6 +14,7 @@ object Variance extends App {
 
   val ccage: CCage[Animal] = new CCage[Cat]
 
+
   //no invariance
   class ICage[T]
 
@@ -59,7 +60,7 @@ object Variance extends App {
   acc.addAnimal(new Kitty)
 
   class MyList[+A] {
-    def add[B >: A](element: B): MyList[B] = new MyList[B] //widening the type
+    def add[B >: A](element: B): MyList[B] = new MyList[B] // widening the type
   }
 
   val emptyList = new MyList[Kitty]
@@ -123,7 +124,22 @@ object Variance extends App {
     def checkVehicles[E <: T](param: String): List[E] = List()
   }
 
+  class Animal2
+  class CatAnimal extends Animal2
+  class Cat2 extends CatAnimal
+  class Dog2 extends Animal2
 
 
+  val cats: List[Animal2] = List[Cat2](new Cat2, new Cat2)
+  val newCats =  new CatAnimal +: cats
+  val allCats = newCats :+ new Dog2
+
+  allCats.foreach(println)
+
+  import collection.mutable._
+  val mutableCats: ArrayBuffer[Cat2] = ArrayBuffer[Cat2]()
+  mutableCats.update(1, new Cat2)
+//  mutableCats.update(1, new Dog2)
+ // mutableCats.update(1, new CatAnimal)
 
 }
